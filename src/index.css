@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --color-brand-green: #22C55E;
+  --color-brand-blue: #0EA5E9;
+  --color-brand-purple: #A855F7;
+  
+  --animate-float-slow: float 16s ease-in-out infinite;
+  --animate-float-medium: float 12s ease-in-out infinite;
+  --animate-float-fast: float 8s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(25px, -20px) scale(1.05); }
+    66% { transform: translate(-15px, 20px) scale(0.95); }
+  }
+}
+
+/* Modern Web App Utilities & Glassmorphism styling */
+@utility glass {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility glass-light {
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+@utility glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility glass-card-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility grid-overlay {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(135deg, #22C55E 0%, #0EA5E9 50%, #A855F7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@utility bg-mesh-gradient {
+  background-image: radial-gradient(at 0% 0%, rgba(34, 197, 94, 0.1) 0px, transparent 50%),
+                    radial-gradient(at 50% 0%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+}
+
+@utility bg-mesh-gradient-light {
+  background-image: radial-gradient(at 0% 0%, rgba(34, 197, 94, 0.05) 0px, transparent 50%),
+                    radial-gradient(at 50% 0%, rgba(14, 165, 233, 0.04) 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.04) 0px, transparent 50%);
+}
+
+/* Global Reset and Layout styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Animated glow styles */
+.glow-effect {
+  position: relative;
+}
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+.glow-effect:hover::after {
+  opacity: 1;
+}
